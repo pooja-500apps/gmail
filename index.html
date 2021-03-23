@@ -23,7 +23,7 @@
             }
             else if(event.data.type == "getEmails"){
                 await signIn(event.data.token)
-                await getEmails();
+                await getEmails(event.data.email);
             }
         });
 
@@ -66,12 +66,13 @@
             } else return true;
         }
 
-        async function getEmails() {
+        async function getEmails(user_email) {
             let gmailData = [];
             let obj = {
                 userId: "me",
                 labelIds: "INBOX",
                 maxResults: 10,
+                q : user_email
             };
             let mailObj = {
                 userId: "me",
