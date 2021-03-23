@@ -22,7 +22,6 @@
                 gapi.auth2.getAuthInstance().signOut();
             }
             else if(event.data.type == "getEmails"){
-                console.log(event, event.data);
                 await signIn(event.data.token)
                 await getEmails(event.data.email);
             }
@@ -33,8 +32,10 @@
                 gapi.load("client:auth2", resolve);
             });
             try{
-            await gapi.client.init(params);
-            }catch(err){console.log(err);}
+                await gapi.client.init(params);
+            } catch(err){
+                console.log(err);
+            }
             let isSignedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
             if (isSignedIn) await updateSigninStatus(isSignedIn);
             else {
@@ -68,7 +69,6 @@
         }
 
         async function getEmails(user_email) {
-            console.log("user_email:",user_email);
             let gmailData = [];
             let obj = {
                 userId: "me",
