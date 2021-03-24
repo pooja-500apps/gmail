@@ -18,7 +18,7 @@
         };
 
         window.addEventListener('message', async (event) => {
-            if(event.data == "signout"){
+            if(event.data.type == "signout"){
                 gapi.auth2.getAuthInstance().signOut();
             }
             else if(event.data.type == "getEmails"){
