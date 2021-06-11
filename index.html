@@ -95,6 +95,7 @@
         function filterMails(data) {
             let mail = {
                 id: data.id,
+                app_name: 'gmail'
             };
             let keys = ["From", "To", "Subject", "Date", "Content-Type"];
             keys.forEach((key) => {
